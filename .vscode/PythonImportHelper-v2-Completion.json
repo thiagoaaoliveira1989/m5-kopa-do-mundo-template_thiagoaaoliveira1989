@@ -1,0 +1,212 @@
+[
+    {
+        "label": "unittest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "unittest",
+        "description": "unittest",
+        "detail": "unittest",
+        "documentation": {}
+    },
+    {
+        "label": "data_processing",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "exceptions",
+        "description": "exceptions",
+        "isExtraImport": true,
+        "detail": "exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "NegativeTitlesError",
+        "importPath": "exceptions",
+        "description": "exceptions",
+        "isExtraImport": true,
+        "detail": "exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "InvalidYearCupError",
+        "importPath": "exceptions",
+        "description": "exceptions",
+        "isExtraImport": true,
+        "detail": "exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "\\",
+        "importPath": "exceptions",
+        "description": "exceptions",
+        "isExtraImport": true,
+        "detail": "exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "TestCase",
+        "importPath": "django.test",
+        "description": "django.test",
+        "isExtraImport": true,
+        "detail": "django.test",
+        "documentation": {}
+    },
+    {
+        "label": "Team",
+        "importPath": "teams.models",
+        "description": "teams.models",
+        "isExtraImport": true,
+        "detail": "teams.models",
+        "documentation": {}
+    },
+    {
+        "label": "Team",
+        "importPath": "teams.models",
+        "description": "teams.models",
+        "isExtraImport": true,
+        "detail": "teams.models",
+        "documentation": {}
+    },
+    {
+        "label": "Team",
+        "importPath": "teams.models",
+        "description": "teams.models",
+        "isExtraImport": true,
+        "detail": "teams.models",
+        "documentation": {}
+    },
+    {
+        "label": "APITestCase",
+        "importPath": "rest_framework.test",
+        "description": "rest_framework.test",
+        "isExtraImport": true,
+        "detail": "rest_framework.test",
+        "documentation": {}
+    },
+    {
+        "label": "APITestCase",
+        "importPath": "rest_framework.test",
+        "description": "rest_framework.test",
+        "isExtraImport": true,
+        "detail": "rest_framework.test",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
+        "isExtraImport": true,
+        "detail": "rest_framework.views",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
+        "isExtraImport": true,
+        "detail": "rest_framework.views",
+        "documentation": {}
+    },
+    {
+        "label": "date",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "TestDataProcessing",
+        "kind": 6,
+        "importPath": "tests.tarefas.tarefa_1.test_data_processing",
+        "description": "tests.tarefas.tarefa_1.test_data_processing",
+        "peekOfCode": "class TestDataProcessing(unittest.TestCase):\n    @classmethod\n    def setUpClass(cls) -> None:\n        function_name = \"data_processing\"\n        cls.base_msg = f\"\\n Verifique se sua função `{function_name}` está %s.\"\n    def test_negative_titles_error(self):\n        \"\"\"\n        Testa se a funçao data_processing\n        levanta a exeção NegativeTitlesError\n        da maneira correta",
+        "detail": "tests.tarefas.tarefa_1.test_data_processing",
+        "documentation": {}
+    },
+    {
+        "label": "TeamModelTest",
+        "kind": 6,
+        "importPath": "tests.tarefas.tarefa_2.test_model",
+        "description": "tests.tarefas.tarefa_2.test_model",
+        "peekOfCode": "class TeamModelTest(TestCase):\n    def test_name_properties(self):\n        expected = 30\n        result = Team._meta.get_field(\"name\").max_length\n        msg = f\"Verifique se a propriedade `max_length` de `name` foi definida como `{expected}`\"\n        self.assertEqual(expected, result, msg)\n    def test_titles_properties(self):\n        result = Team._meta.get_field(\"titles\").null\n        msg = f\"Verifique se o atributo `titles` foi definido como opcional\"\n        self.assertTrue(result, msg)",
+        "detail": "tests.tarefas.tarefa_2.test_model",
+        "documentation": {}
+    },
+    {
+        "label": "CreateTeamTest",
+        "kind": 6,
+        "importPath": "tests.tarefas.tarefa_3.test_views",
+        "description": "tests.tarefas.tarefa_3.test_views",
+        "peekOfCode": "class CreateTeamTest(APITestCase):\n    @classmethod\n    def setUpTestData(cls) -> None:\n        cls.BASE_URL = \"/api/teams/\"\n    def test_if_a_team_can_be_created(self):\n        team_data = {\n            \"name\": \"Brasil\",\n            \"titles\": 5,\n            \"top_scorer\": \"Pelé\",\n            \"fifa_code\": \"BRA\",",
+        "detail": "tests.tarefas.tarefa_3.test_views",
+        "documentation": {}
+    },
+    {
+        "label": "ListTeamTest",
+        "kind": 6,
+        "importPath": "tests.tarefas.tarefa_3.test_views",
+        "description": "tests.tarefas.tarefa_3.test_views",
+        "peekOfCode": "class ListTeamTest(APITestCase):\n    @classmethod\n    def setUpTestData(cls) -> None:\n        cls.BASE_URL = \"/api/teams/\"\n    def test_if_teams_can_be_listed(self):\n        team_1_data = {\n            \"name\": \"Brasil\",\n            \"titles\": 5,\n            \"top_scorer\": \"Pelé\",\n            \"fifa_code\": \"BRA\",",
+        "detail": "tests.tarefas.tarefa_3.test_views",
+        "documentation": {}
+    },
+    {
+        "label": "TeamViewsTest",
+        "kind": 6,
+        "importPath": "tests.tarefas.tarefa_4.test_views",
+        "description": "tests.tarefas.tarefa_4.test_views",
+        "peekOfCode": "class TeamViewsTest(APITestCase):\n    @classmethod\n    def setUpTestData(cls) -> None:\n        cls.BASE_URL = \"/api/teams/\"\n        cls.BASE_DETAIL_URL = cls.BASE_URL + \"1/\"\n    def test_if_a_team_can_be_updated(self):\n        team_1_data = {\n            \"name\": \"Brasil\",\n            \"titles\": 5,\n            \"top_scorer\": \"Pelé\",",
+        "detail": "tests.tarefas.tarefa_4.test_views",
+        "documentation": {}
+    },
+    {
+        "label": "NegativeTitlesError",
+        "kind": 6,
+        "importPath": "exceptions",
+        "description": "exceptions",
+        "peekOfCode": "class NegativeTitlesError(Exception):\n    def __init__(self, mensagem=\"titles cannot be negative\"):\n        super().__init__(mensagem)\nclass InvalidYearCupError(Exception):\n    def __init__(self, mensagem=\"there was no world cup this year\"):\n        super().__init__(mensagem)\nclass ImpossibleTitlesError(Exception):\n    def __init__(self, mensagem=\"impossible to have more titles than disputed cups\"):\n        super().__init__(mensagem)",
+        "detail": "exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "InvalidYearCupError",
+        "kind": 6,
+        "importPath": "exceptions",
+        "description": "exceptions",
+        "peekOfCode": "class InvalidYearCupError(Exception):\n    def __init__(self, mensagem=\"there was no world cup this year\"):\n        super().__init__(mensagem)\nclass ImpossibleTitlesError(Exception):\n    def __init__(self, mensagem=\"impossible to have more titles than disputed cups\"):\n        super().__init__(mensagem)",
+        "detail": "exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "ImpossibleTitlesError",
+        "kind": 6,
+        "importPath": "exceptions",
+        "description": "exceptions",
+        "peekOfCode": "class ImpossibleTitlesError(Exception):\n    def __init__(self, mensagem=\"impossible to have more titles than disputed cups\"):\n        super().__init__(mensagem)",
+        "detail": "exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "data_processing",
+        "kind": 2,
+        "importPath": "utils",
+        "description": "utils",
+        "peekOfCode": "def data_processing(data: dict):\n    titles = data[\"titles\"]\n    first_cup = data[\"first_cup\"]\n    year_first_cup = int(first_cup.split('-')[0])\n    year_cup_initial = 1930\n    now = datetime.now()\n    year_current = now.year\n    title_for_year = titles * 4\n    if titles < 0:\n        raise NegativeTitlesError()",
+        "detail": "utils",
+        "documentation": {}
+    }
+]
