@@ -4,6 +4,7 @@ from teams.models import Team
 from django.forms.models import model_to_dict
 from utils import data_processing
 from exceptions import NegativeTitlesError, InvalidYearCupError, ImpossibleTitlesError
+from django.http import Http404
 
 
 class TeamView(APIView):
@@ -19,17 +20,46 @@ class TeamView(APIView):
                 first_cup=team_data["first_cup"],
             )
 
-            return Response(model_to_dict(team), 201)
+            return Response(model_to_dict(team), status=201)
         except (NegativeTitlesError, InvalidYearCupError, ImpossibleTitlesError) as err:
-            return Response({"Error ": str(err)}, status=400)
+            return Response({"Error": str(err)}, status=400)
 
     def get(self, request):
         teams = Team.objects.all()
+        teams_dict = [model_to_dict(team) for team in teams]
+        return Response(teams_dict)
 
-        teams_dic = []
+    def get(self, request, pk=None):
+        if pk is not None:
+            try:
+                team = Team.objects.get(pk=pk)
+                team_dict = model_to_dict(team)
+                return Response(team_dict, status=200)
+            except Team.DoesNotExist:
+                raise Http404("Team does not exist")
 
-        for team in teams:
-            t = model_to_dict(team)
-            teams_dic.append(t)
+        teams = Team.objects.all()
+        teams_dict = [model_to_dict(team) for team in teams]
+        return Response(teams_dict)
 
-        return Response(teams_dic)
+    def patch(self, request, pk):
+        try:
+            team = Team.objects.get(pk=pk)
+            data = request.data
+
+            for field, value in data.items():
+                setattr(team, field, value)
+
+            team.save()
+
+            return Response(model_to_dict(team), status=200)
+        except Team.DoesNotExist:
+            raise Http404("Team does not exist")
+
+    def delete(self, request, pk):
+        try:
+            team = Team.objects.get(pk=pk)
+            team.delete()
+            return Response(status=204)
+        except Team.DoesNotExist:
+            raise Http404("Team does not exist")
